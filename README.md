@@ -1,2 +1,0 @@
-# covid-project
-# covid-project
