@@ -1,0 +1,25 @@
+{
+  "name": "covid-project",
+  "version": "1.0.0",
+  "description": "'Backend for the covid project.'",
+  "author": "BJ Rutledge <billy.rutledge867037@gmail.com>",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/he-man-david/covid-project"
+  },
+  "scripts": {
+    "start": "./bin/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "pino": "^6.13.0",
+    "pino-http": "^5.6.0",
+    "pino-pretty": "^5.1.3"
+  }
+}
