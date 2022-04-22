@@ -1,0 +1,10 @@
+/**Development start api 
+ * 
+ */
+console.log('Development mode staring...');
+ require('../index.js')({
+    port: 8000,
+    host: 'localhost'
+  });
+
+  

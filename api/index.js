@@ -1,12 +1,20 @@
 'use strict'
+
+require('dotenv').config();
+
+console.log('process env', process.env);
+
 const express = require('express')
 const app = express();
 
 const httpErrors = require('http-errors')
 
-const path = require('path')
+const path = require('path');
 
-// const ejs = require('ejs')
+const cors = require('cors');
+app.use(cors());
+
+const ejs = require('ejs');
 const pino = require('pino');
 const pinoHttp = require('pino-http');
 
@@ -17,7 +25,7 @@ module.exports = function main(options, cb) {
     // Default options
     port: 3000,
     host: null
-    // account for if null options is passed.
+    // account for if nulln options is passed.
   }, options? options: {});
 
   const logger = pino();
@@ -51,9 +59,9 @@ module.exports = function main(options, cb) {
 
 
   // Template engine
-  // app.engine('html', ejs.renderFile)
-  // app.set('views', path.join(__dirname, 'views'))
-  // app.set('view engine', 'html')
+  app.engine('html', ejs.renderFile)
+  app.set('views', path.join(__dirname, 'views'))
+  app.set('view engine', 'html')
 
   // Common middleware
   // app.use(/* ... */)
@@ -69,8 +77,7 @@ module.exports = function main(options, cb) {
 
   // Common error handlers
   app.use(function fourOhFourHandler(req, res, next) {
-
-    next(httpErrors(404, `Route not found: ${req.url}`));
+    next(httpErrors(404, `This AIP now has viable HTML content. Please visit www.covidproject.us`));
   });
 
   app.use(function fiveHundredHandler(err, req, res, next) {
@@ -81,8 +88,9 @@ module.exports = function main(options, cb) {
 
     res.locals.name = 'covid-project';
     res.locals.error = err;
-    res.status(err.status || 500).render('error');
-
+    //TODO 
+    res.status(err.status || 500).send(`Oops! We messed up somewhere!`);
+    //.render('error');
   });
 
   // Start server

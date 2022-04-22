@@ -5,4 +5,4 @@
 require('../')({
   port: 8000,
   host: 'localhost'
-})
+});
